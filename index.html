@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector Weighted Voting Game Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vector Weighted Voting Game Calculator</h1>
+            <p>Calculate Shapley and Banzhaf values for arbitrary vector weighted voting games</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="parameter-input">
+                    <label for="k-input">Number of quotas/dimensions (k):</label>
+                    <input type="number" id="k-input" min="1" max="10" value="2">
+                    <button id="setup-btn">Setup Game</button>
+                </div>
+
+                <div id="game-setup" class="hidden">
+                    <div class="quotas-section">
+                        <h3>Quotas</h3>
+                        <div id="quotas-container"></div>
+                    </div>
+
+                    <div class="weights-section">
+                        <h3>Weight Vectors</h3>
+                        <div class="players-controls">
+                            <label for="num-players">Number of players:</label>
+                            <input type="number" id="num-players" min="1" max="20" value="3">
+                            <button id="add-player-btn">Add Player</button>
+                            <button id="remove-player-btn">Remove Player</button>
+                        </div>
+                        <div id="weights-container"></div>
+                    </div>
+
+                    <div class="csv-section">
+                        <h3>Or Upload CSV</h3>
+                        <input type="file" id="csv-input" accept=".csv">
+                        <button id="load-csv-btn">Load CSV</button>
+                        <p class="csv-help">CSV format: First row = quotas, subsequent rows = weight vectors for each player</p>
+                    </div>
+
+                    <div class="calculation-section">
+                        <div class="method-selection">
+                            <label>
+                                <input type="radio" name="method" value="shapley" checked>
+                                Shapley Values
+                            </label>
+                            <label>
+                                <input type="radio" name="method" value="banzhaf">
+                                Banzhaf Index
+                            </label>
+                        </div>
+                        <button id="calculate-btn">Calculate</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Calculating...</p>
+                </div>
+                <div id="results" class="hidden">
+                    <h3>Results</h3>
+                    <div id="results-content"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Created for CS 396 - Computational Game Theory</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
